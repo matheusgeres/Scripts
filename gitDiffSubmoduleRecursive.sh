@@ -3,6 +3,7 @@
 # alias git-submodule-recursive="~/sandbox/Scripts/gitDiffSubmoduleRecursive.sh"
 
 FILE_CHANGE_GIT="/tmp/change-git"
+TABS_IDENT="    "
 
 # Função para verificar se tem diff
 function checkDiff {
@@ -14,10 +15,10 @@ function checkDiff {
   # Verificando se há diff com base no arquivo gerado
   if [ -s $FILE_CHANGE_GIT ]
   then
-    echo "    ==> There is a diff! Push your branch, dude! :D"
-    echo "    git $GIT_DIR push --set-upstream origin $CURRENT_BRANCH"
+    echo "$TABS_IDENT ==> There is a diff! Push your branch, dude! :D"
+    echo "$TABS_IDENT git $GIT_DIR push --set-upstream origin $CURRENT_BRANCH"
   else
-    echo "    There is no diff! Enjoy your day! ;D"
+    echo "$TABS_IDENT There is no diff! Enjoy your day! ;D"
   fi
 
   # Limpando o arquivo de change

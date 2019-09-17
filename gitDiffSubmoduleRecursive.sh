@@ -15,7 +15,7 @@ function checkDiff {
   if [ -s $FILE_CHANGE_GIT ]
   then
     echo "There is a diff! Push your branch, dude! :D "
-    echo "git push --set-upstream origin $CURRENT_BRANCH"
+    echo "git $GIT_DIR push --set-upstream origin $CURRENT_BRANCH"
   else
     echo "There is no diff! Enjoy your day! ;D"
   fi

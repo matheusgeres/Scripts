@@ -1,4 +1,7 @@
 #!/bin/bash
+# Crie um alias para que o script rode como um programa
+# alias git-submodule-recursive="~/sandbox/Scripts/gitDiffSubmoduleRecursive.sh"
+
 FILE_CHANGE_GIT="/tmp/change-git"
 
 # Função para verificar se tem diff

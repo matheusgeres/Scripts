@@ -11,6 +11,7 @@ function checkDiff {
   
   CURRENT_AUTHOR=`git config --global user.name`
   LAST_AUTHOR=`git $GIT_DIR log -1 --pretty=format:'%an'`
+  MESSAGE_NODIFF="$TABS_IDENT There is no diff! Enjoy your day! ;D"
 
   if [ "$CURRENT_AUTHOR" == "$LAST_AUTHOR" ]
   then 
@@ -24,13 +25,13 @@ function checkDiff {
       echo "$TABS_IDENT ==> There is a diff! Push your branch, dude! :D"
       echo "$TABS_IDENT (!) git $GIT_DIR push --set-upstream origin $CURRENT_BRANCH"
     else
-      echo "$TABS_IDENT There is no diff! Enjoy your day! ;D"
+      echo $MESSAGE_NODIFF
     fi
 
     # Limpando o arquivo de change
     rm $FILE_CHANGE_GIT
   else
-    echo "$TABS_IDENT There is no diff! Enjoy your day! ;D"
+    echo $MESSAGE_NODIFF
   fi
 
   echo ""

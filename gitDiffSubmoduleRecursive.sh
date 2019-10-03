@@ -4,6 +4,12 @@
 
 FILE_CHANGE_GIT="/tmp/change-git"
 TABS_IDENT="    "
+RED='\033[0;31m'
+NC='\033[0m'
+LIGHT_GREEN='\e[92m'
+BLUE='\e[34m'
+BLINK='\e[5m'
+WHITE_BG='\e[107m'
 
 # Função para verificar se tem diff
 function checkDiff {
@@ -22,7 +28,7 @@ function checkDiff {
     if [ -s $FILE_CHANGE_GIT ]
     then
       echo "$TABS_IDENT ==> There is a diff! Push your branch, dude! :D"
-      echo "$TABS_IDENT (!) git $GIT_DIR push --set-upstream origin $CURRENT_BRANCH"
+      echo -e "$TABS_IDENT $RED$BLINK(!)$NC$LIGHT_GREEN git $GIT_DIR push --set-upstream origin $CURRENT_BRANCH $NC"
     else
       echo "$TABS_IDENT There is no diff! Enjoy your day! ;D"
     fi
@@ -44,7 +50,7 @@ BRANCH_DEST="$1"
 
 IFS=$'\n'; set -f; listSub=($SUBMODULES)
 for sub in "${listSub[@]}" ; do
-  echo "--" "$sub" "--" 
+  echo -e "$BLUE--" "$sub" "--$NC" 
   # echo `git --git-dir=$sub/.git branch`
   checkDiff $sub $BRANCH_DEST
 done
